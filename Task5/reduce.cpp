@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 void displayFraction( int a = 0, int b = 1 )
 {
     cout << a << "/" << b;
@@ -14,7 +17,7 @@ int gcd( int a, int b )
     else if( a < b )
         i = a;
 
-    for( ; !(a % i) && !(b % i); i-- )
+    for( ; (a % i) || (b % i); i-- )
        ;
 
    return i; 
