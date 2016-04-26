@@ -5,7 +5,6 @@ using namespace std;
 #define TIE 0
 #define MAXTURNS 9
 
-
 int checkDiagonals( char board[3][3] );
 void printBoard( char board[3][3] );
 
