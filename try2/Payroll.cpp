@@ -59,16 +59,15 @@ int getHours( double hoursArray[], int hoursMAX )
         } else if ( hours == 0 || hours > 40 )
         {
             cout << "You have entered " << hours << ", which is an abnormal input. Please confirm input (Y or N): ";
-            char input;
-            cin >> input;
+            getline( cin, input );
 
-            if ( input == 'N' )
+            if ( input == "N" || input == "n" )
             {
                 cout << "----------------------------------------------------------" << endl;
                 cout << "You have entered " << hours << " and indicated that it is invalid. Program terminated." << endl;
                 cout << "----------------------------------------------------------" << endl;
                 return 0;
-            } else if ( input == 'Y' )
+            } else if ( input == "Y" || input == "y" )
             {
             } else
             {
