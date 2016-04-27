@@ -1,22 +1,25 @@
 #include <iostream>
 
 #include "ArrayOperations.h"    // functions to be tested
+
 using namespace std;
 
 int main()
 {
     double array[ROW][COL] = {};
 
-    int count = 1; // initialize and display array, counting from 1 up
+    int count = 10; // initialize and display array, counting from 10 up
     for( int i = 0; i < ROW; i++ )
     {
         for( int j = 0; j < COL; j++ )
         {
             array[i][j] = count++;
+            cout << array[i][j];
             cout << " ";
         }
         cout << endl;
     }
+    cout << endl << endl;
 
     cout << "getTotal, then of row 1, then column 3:" << endl;
     cout << getTotal( array ) << endl;

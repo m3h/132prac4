@@ -1,5 +1,5 @@
 // function definitions of ArrayOperations.h
-
+#include "ArrayOperations.h"
 
 double getTotal( const double array[ROW][COL] )
 {
@@ -12,9 +12,10 @@ double getTotal( const double array[ROW][COL] )
     return total;
 }
 
-double getTotal( int rowNo, const double array[ROW][COL] );
+double getTotal( int rowNo, const double array[ROW][COL] )
 {
     double total = 0;
+    --rowNo;        // correct for array subscript notation
 
     for( int i = 0; i < COL; i++ )
         total += array[rowNo][i];
@@ -25,9 +26,10 @@ double getTotal( int rowNo, const double array[ROW][COL] );
 double getTotal( const double array[ROW][COL], int colNo )
 {
     double total = 0;
+    --colNo;
 
     for( int i = 0; i < ROW; i++ )
-        total += array[i][COL];
+        total += array[i][colNo];
 
     return total;
 }
@@ -43,7 +45,7 @@ double getAverage( int rowNo, const double array[ROW][COL] )
     return getTotal( rowNo, array ) / COL;
 }
 
-double getAverage( const double array[ROW][COL], colNo )
+double getAverage( const double array[ROW][COL], int colNo )
 {
     return getTotal( array, colNo ) / ROW;
 }
@@ -62,18 +64,20 @@ double getHighest( const double array[ROW][COL] )
 
 double getHighest( int rowNo, const double array[ROW][COL] )
 {
-    double highest = array[0][0];
+    --rowNo;
+    double highest = array[rowNo][0];
 
     for( int i = 0; i < COL; i++ )
-        if( array[rowNo][COL] > highest )
-            highest = array[rowNo][COL];
+        if( array[rowNo][i] > highest )
+            highest = array[rowNo][i];
 
     return highest;
 }
 
 double getHighest( const double array[ROW][COL], int colNo )
 {
-    double highest = array[0][0];
+    double highest = array[0][colNo];
+    --colNo;
 
     for( int i = 0; i < ROW; i++ )
         if( array[i][colNo] > highest )
@@ -88,7 +92,7 @@ double getLowest( const double array[ROW][COL] )
     double lowest = array[0][0];
 
     for( int i = 0; i < ROW; i++ )
-        for( int j = 0; j < ROW; j++ )
+        for( int j = 0; j < COL; j++ )
             if( array[i][j] < lowest )
                 lowest = array[i][j];
 
@@ -97,7 +101,8 @@ double getLowest( const double array[ROW][COL] )
 
 double getLowest( int rowNo, const double array[ROW][COL] )
 {
-    double lowest = array[0][0];
+    --rowNo;
+    double lowest = array[rowNo][0];
 
     for( int i = 0; i < COL; i++ )
         if( array[rowNo][i] < lowest )
@@ -108,7 +113,8 @@ double getLowest( int rowNo, const double array[ROW][COL] )
 
 double getLowest( const double array[ROW][COL], int colNo )
 {
-    double lowest = array[0][0];
+    --colNo;
+    double lowest = array[0][colNo];
 
     for( int i = 0; i > ROW; i++ )
         if( array[i][colNo] < lowest )
