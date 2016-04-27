@@ -6,13 +6,24 @@
 
 using namespace std;
 
+#define FORMAT right << setw(WIDTH) << fixed << setprecision(2)
+
 int populate( double array[ROW][COL] );
+
+void printLine();
+
+void printArray( const double array[ROW][COL] );
+void printHeader();
+void printMiddle( const double array[ROW][COL] );
+void printFooter( const double array[ROW][COL] );
 
 int main()
 {
     double array[ROW][COL] = {}; 
-    cout << populate( array );
+    if( populate( array ) )
         return 0;
+
+    void printArray();
 }
 
 int populate( double array[ROW][COL] )
@@ -60,3 +71,95 @@ int populate( double array[ROW][COL] )
     return 0;
 }
 
+void printArray( const double array[ROW][COL] )
+{
+    printHeader();
+    printMiddle( array );
+    printFooter( array );
+}
+
+void printHeader()
+{
+    for( int i = 0; i < COL; i++ )
+        for( int j = 0 ; j < WIDTH; j++ )
+            cout << " ";
+
+    cout << " |";
+
+    cout << right << setw(WIDTH) << "Total";
+    cout << right << setw(WIDTH) << "Max";
+    cout << right << setw(WIDTH) << "Min";
+    cout << endl;
+
+    printLine();
+}
+
+
+void printMiddle( const double array[ROW][COL] )
+{
+    for( int i = 0; i < ROW; i++ )
+    {
+        for( int j = 0; j < COL; j++ )
+            cout << right << setw(WIDTH) << fixed << setprecision(2)
+                << array[i][j];
+        cout << " |";
+
+
+        cout << right << setw(WIDTH) << fixed << setprecision(2)
+            << getTotal( i + 1, array );
+        cout << right << setw(WIDTH) << fixed << setprecision(2)
+            << getHighest( i + 1, array );
+        cout << right << setw(WIDTH) << fixed << setprecision(2)
+            << getLowest( i + 1, array );
+    }
+
+}
+
+void printFooter( const double array[ROW][COL] )
+{
+    printLine();
+
+    for( int i = 0; i < COL; i++ )
+    {
+        cout << right << setw(WIDTH) << fixed << setprecision(2)
+            << getTotal( array, i + 1 );
+    }
+    cout << " |";
+
+    double total = 0;
+    for( int i = 0; i < ROW; i++ )
+        total += getTotal( i + 1, array );
+
+    cout << right << setw(WIDTH) << fixed << setprecision(2)
+        << total;
+
+    double max = getHighest( 1, array );
+    for( int i = 1; i <= ROW; i++ )
+        if( max < getHighest( i, array ))
+                max = getHighest( i, array );
+    
+    cout << right << setw(WIDTH) << fixed << setprecision(2)
+    << max;
+
+    double min = getLowest( 1, array )
+        for( int i = 1; i <= ROW; i++ )
+            if( min > getLowest( i, array ) )
+                min = getLowest( i, array );
+    cout << right << setw(WIDTH) << fixed << setprecision(2)
+        << min;
+}
+
+void printLine()
+{
+
+    for( int i = 0; i < COL; i++ )
+        for( int j = 0; j < WIDTH; j++ )
+            cout << "-";
+
+    cout << "-|";
+
+    for( int i = 0; i < 3; i++ )
+        for( int j = 0; j < WIDTH; j++ )
+            cout << "-";
+    cout << endl;
+}
