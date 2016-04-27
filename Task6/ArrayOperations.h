@@ -33,11 +33,11 @@ double getAverage(const double[ROW][COL], int);
 double getHighest(const double[ROW][COL]);
 
 /* The first argument is the subscript of a row in the array passed as the second parameter
-/* Returns the highest of all the values in the array passed as parameter*/
+/* Returns the highest of all the values in the row of the array passed as parameter*/
 double getHighest(int, const double[ROW][COL]);
 
 /* The second argument is the subscript of a column in the array passed as the first parameter
-/* Returns the highest of all the values in the array passed as parameter*/
+/* Returns the highest of all the values in the column of the array passed as parameter*/
 double getHighest(const double[ROW][COL], int);
 
 
@@ -45,11 +45,11 @@ double getHighest(const double[ROW][COL], int);
 double getLowest(const double[ROW][COL]);
 
 /* The first argument is the subscript of a row in the array passed as the second parameter
-/* Returns the lowest of all the values in the array passed as parameter*/
+/* Returns the lowest of all the values in the row of the array passed as parameter*/
 double getLowest(int, const double[ROW][COL]);
 
 /* The second argument is the subscript of a column in the array passed as the first parameter
-/* Returns the lowest of all the values in the array passed as parameter*/
+/* Returns the lowest of all the values in the column of the array passed as parameter*/
 double getLowest(const double[ROW][COL], int);
 
 #endif
