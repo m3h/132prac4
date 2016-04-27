@@ -126,25 +126,28 @@ void printFooter( const double array[ROW][COL] )
     }
     cout << " |";
 
-    double total = 0;
+    /* double total = 0;
     for( int i = 0; i < ROW; i++ )
         total += getTotal( i, array );
+    */
 
-    cout << FORMAT << total;
+    cout << FORMAT << getTotal( array );
 
-    double max = getHighest( 1, array );
+    /* double max = getHighest( 1, array );
     for( int i = 0; i < ROW; i++ )
         if( max < getHighest( i, array ))
                 max = getHighest( i, array );
-    
-    cout << FORMAT << max;
+    */
 
-    double min = getLowest( 1, array );
+    cout << FORMAT << getHighest( array );
+
+    /* double min = getLowest( 1, array );
 
     for( int i = 0; i < ROW; i++ )
         if( min > getLowest( i, array ) )
             min = getLowest( i, array );
-    cout << FORMAT << min;
+    */
+    cout << FORMAT << getLowest( array );
     cout << endl;
 }
 
