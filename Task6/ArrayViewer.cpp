@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 
 #include "ArrayOperations.h"
 
@@ -23,7 +24,10 @@ int main()
     if( populate( array ) )
         return 0;
 
-    void printArray();
+    printArray( array );
+    
+    return 0;
+
 }
 
 int populate( double array[ROW][COL] )
@@ -65,7 +69,7 @@ int populate( double array[ROW][COL] )
         cout << "This program needs " << ROW * COL << " real values to fill an array with " << ROW << " and " << COL << " columns." << endl;
         cout << "Only " << noVals << " real values could be read from the file called " << filename << "." << endl;
 
-        return noVals;
+        return -2;
     }
 
     return 0;
@@ -111,6 +115,7 @@ void printMiddle( const double array[ROW][COL] )
             << getHighest( i + 1, array );
         cout << right << setw(WIDTH) << fixed << setprecision(2)
             << getLowest( i + 1, array );
+        cout << endl;
     }
 
 }
@@ -141,12 +146,14 @@ void printFooter( const double array[ROW][COL] )
     cout << right << setw(WIDTH) << fixed << setprecision(2)
     << max;
 
-    double min = getLowest( 1, array )
-        for( int i = 1; i <= ROW; i++ )
-            if( min > getLowest( i, array ) )
-                min = getLowest( i, array );
+    double min = getLowest( 1, array );
+
+    for( int i = 1; i <= ROW; i++ )
+        if( min > getLowest( i, array ) )
+            min = getLowest( i, array );
     cout << right << setw(WIDTH) << fixed << setprecision(2)
         << min;
+    cout << endl;
 }
 
 void printLine()
