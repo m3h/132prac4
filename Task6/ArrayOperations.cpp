@@ -15,7 +15,6 @@ double getTotal( const double array[ROW][COL] )
 double getTotal( int rowNo, const double array[ROW][COL] )
 {
     double total = 0;
-    --rowNo;        // correct for array subscript notation
 
     for( int i = 0; i < COL; i++ )
         total += array[rowNo][i];
@@ -26,7 +25,6 @@ double getTotal( int rowNo, const double array[ROW][COL] )
 double getTotal( const double array[ROW][COL], int colNo )
 {
     double total = 0;
-    --colNo;
 
     for( int i = 0; i < ROW; i++ )
         total += array[i][colNo];
@@ -64,7 +62,6 @@ double getHighest( const double array[ROW][COL] )
 
 double getHighest( int rowNo, const double array[ROW][COL] )
 {
-    --rowNo;
     double highest = array[rowNo][0];
 
     for( int i = 0; i < COL; i++ )
@@ -77,7 +74,6 @@ double getHighest( int rowNo, const double array[ROW][COL] )
 double getHighest( const double array[ROW][COL], int colNo )
 {
     double highest = array[0][colNo];
-    --colNo;
 
     for( int i = 0; i < ROW; i++ )
         if( array[i][colNo] > highest )
@@ -101,7 +97,6 @@ double getLowest( const double array[ROW][COL] )
 
 double getLowest( int rowNo, const double array[ROW][COL] )
 {
-    --rowNo;
     double lowest = array[rowNo][0];
 
     for( int i = 0; i < COL; i++ )
@@ -113,10 +108,9 @@ double getLowest( int rowNo, const double array[ROW][COL] )
 
 double getLowest( const double array[ROW][COL], int colNo )
 {
-    --colNo;
     double lowest = array[0][colNo];
 
-    for( int i = 0; i > ROW; i++ )
+    for( int i = 0; i < ROW; i++ )
         if( array[i][colNo] < lowest )
             lowest = array[i][colNo];
 

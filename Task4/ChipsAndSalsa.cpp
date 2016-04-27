@@ -12,12 +12,20 @@ int getMinSalsa();
  
 int main()
 {
+
+    cout << "********************" << endl;
+    cout << "* CHIPS AND SALSA  *" << endl;
+    cout << "********************" << endl;
+
     int errorCount;
     errorCount = getInput();
 
     displayReport();
 
-    cout << "Warning: A total of " << errorCount << " errors were encountered during input." << endl;
+    if( errorCount )
+        cout << "Warning: A total of " << errorCount << " errors were encountered during input." << endl;
+    else
+        cout << "No errors were encountered during input." << endl;
 
     return 0;
 }
@@ -41,6 +49,7 @@ int getInput()
 
         numOfJars[i] = static_cast<int>(input);
     }
+    cout << endl;
 
     return errorCount;
 }
@@ -61,6 +70,7 @@ void displayReport()
     cout << "----------------------" << endl;
     cout << left << setw(8) << "Total:" << right << setw(13) << getTotal() << endl;
     cout << "----------------------" << endl;
+    cout << endl;
 
     int maxSalsa, minSalsa;
     maxSalsa = getMaxSalsa();
@@ -80,13 +90,14 @@ int getTotal()
 
     return total;
 }
+
 int getMaxSalsa()
 {
     int maxVal = 0, maxIndex = 0;
 
     for( int i = NUM_OF_SALSA_TYPES - 1; i >= 0; i-- )
     {
-        if( numOfJars[i] > maxVal )
+        if( numOfJars[i] >= maxVal )
         {
             maxVal = numOfJars[i];
             maxIndex = i;
@@ -100,11 +111,11 @@ int getMaxSalsa()
 int getMinSalsa()
 {
     int minVal, minIndex = 0;
-    minVal = numOfJars[getMaxSalsa()];   // set the inital min to the highest possible;
+    minVal = numOfJars[0];
 
     for( int i = 0; i < NUM_OF_SALSA_TYPES; i++ )
     {
-        if( numOfJars[i] < minVal )
+        if( numOfJars[i] <= minVal )
         {
             minVal = numOfJars[i];
             minIndex = i;

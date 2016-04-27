@@ -104,17 +104,13 @@ void printMiddle( const double array[ROW][COL] )
     for( int i = 0; i < ROW; i++ )
     {
         for( int j = 0; j < COL; j++ )
-            cout << right << setw(WIDTH) << fixed << setprecision(2)
-                << array[i][j];
+            cout << FORMAT << array[i][j];
         cout << " |";
 
 
-        cout << right << setw(WIDTH) << fixed << setprecision(2)
-            << getTotal( i + 1, array );
-        cout << right << setw(WIDTH) << fixed << setprecision(2)
-            << getHighest( i + 1, array );
-        cout << right << setw(WIDTH) << fixed << setprecision(2)
-            << getLowest( i + 1, array );
+        cout << FORMAT << getTotal( i, array );
+        cout << FORMAT << getHighest( i, array );
+        cout << FORMAT << getLowest( i, array );
         cout << endl;
     }
 
@@ -126,33 +122,29 @@ void printFooter( const double array[ROW][COL] )
 
     for( int i = 0; i < COL; i++ )
     {
-        cout << right << setw(WIDTH) << fixed << setprecision(2)
-            << getTotal( array, i + 1 );
+        cout << FORMAT << getTotal( array, i );
     }
     cout << " |";
 
     double total = 0;
     for( int i = 0; i < ROW; i++ )
-        total += getTotal( i + 1, array );
+        total += getTotal( i, array );
 
-    cout << right << setw(WIDTH) << fixed << setprecision(2)
-        << total;
+    cout << FORMAT << total;
 
     double max = getHighest( 1, array );
-    for( int i = 1; i <= ROW; i++ )
+    for( int i = 0; i < ROW; i++ )
         if( max < getHighest( i, array ))
                 max = getHighest( i, array );
     
-    cout << right << setw(WIDTH) << fixed << setprecision(2)
-    << max;
+    cout << FORMAT << max;
 
     double min = getLowest( 1, array );
 
-    for( int i = 1; i <= ROW; i++ )
+    for( int i = 0; i < ROW; i++ )
         if( min > getLowest( i, array ) )
             min = getLowest( i, array );
-    cout << right << setw(WIDTH) << fixed << setprecision(2)
-        << min;
+    cout << FORMAT << min;
     cout << endl;
 }
 

@@ -22,6 +22,13 @@ int main()
     absA = abs(a);
     absB = abs(b);
 
+    if( b == 0 )
+    {
+        cout << "Error! division by zero" << endl;
+        cout << "Terminating..." << endl;
+        return 0;
+    }
+
     cout << "The GCD of " << absA << " and " << absB << " is " << gcd( absA, absB ) << endl;
 
     cout << "The lowest form of ";
