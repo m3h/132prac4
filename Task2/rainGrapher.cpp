@@ -14,7 +14,7 @@ int main()
 
     if(!dataIn)
     {
-        cout << "Error opening file \"raindata.txt\"! Terminating now." << endl; // I opening fails, terminate
+        cout << "Error opening file \"raindata.txt\"! Terminating now." << endl; // If opening fails, terminate
         return 0;
     }
 
