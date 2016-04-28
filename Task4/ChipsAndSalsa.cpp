@@ -40,14 +40,17 @@ int getInput()
         cout << "Enter the number of jars of " << salsaName[i] << " sold: ";
         cin >> input;
 
-        if( input < 0.0 )
+        if( input == 0.0 )
+        {
+            ++errorCount;
+        }
+        else if( input < 0.0 )
         {
             input = 0.0;
             ++errorCount;
         }
-        else 
+        else if( static_cast<int>(input) != input)
         {
-            if( static_cast<int>(input) != input)
                  ++errorCount;
         }
 

@@ -29,7 +29,7 @@ int main()
         return 0;
     }
 
-    return -1;
+    return 0;
 }
 
 int getHours( double hoursArray[], int hoursMAX )
@@ -67,7 +67,8 @@ int getHours( double hoursArray[], int hoursMAX )
                 cout << "You have entered " << hours << " and indicated that it is invalid. Program terminated." << endl;
                 cout << "----------------------------------------------------------" << endl;
                 return 0;
-            } else if ( input == "Y" || input == "y" )
+            } 
+            else if ( input == "Y" || input == "y" )
             {
             } else
             {
