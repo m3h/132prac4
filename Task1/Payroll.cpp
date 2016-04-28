@@ -4,7 +4,7 @@
 
 using namespace std;
 
-#define hoursArrayMAX 10000
+#define hoursArrayMAX 1000
 
 int getHours( double hoursArray[], int hoursMAX );
 int displayHours( double hoursArray[], int hoursMAX );
@@ -50,13 +50,15 @@ int getHours( double hoursArray[], int hoursMAX )
         {
             hoursArray[i] = hours;
             return 1;
-        } else if ( hours < 0 || hours > 50 )
+        } 
+        else if ( hours < 0 || hours > 50 )
         {
             cout << "----------------------------------------------------------" << endl;
             cout << "You have entered " << hours << ". It is invalid. Program terminated." << endl;
             cout << "----------------------------------------------------------" << endl;
             return 0;
-        } else if ( hours == 0 || hours > 40 )
+        } 
+        else if ( hours == 0 || hours > 40 )
         {
             cout << "You have entered " << hours << ", which is an abnormal input. Please confirm input (Y or N): ";
             getline( cin, input );
@@ -70,12 +72,14 @@ int getHours( double hoursArray[], int hoursMAX )
             } 
             else if ( input == "Y" || input == "y" )
             {
-            } else
+            } 
+            else
             {
                 cout << "Fuck knowns" << endl;
                 return 0;
             }
-        } else if ( hours == 999 )
+        } 
+        else if ( hours == 999 )
         {
             hoursArray[i] = hours;
             return 1;
