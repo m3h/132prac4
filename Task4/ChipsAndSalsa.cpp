@@ -22,7 +22,7 @@ int main()
 
     displayReport();
 
-    if( errorCount )
+    if( errorCount != 0 )
         cout << "Warning: A total of " << errorCount << " errors were encountered during input." << endl;
     else
         cout << "No errors were encountered during input." << endl;
@@ -44,8 +44,12 @@ int getInput()
         {
             input = 0.0;
             ++errorCount;
-        } else if( (input - static_cast<int>(input)) != 0.0 )
-            ++errorCount;
+        }
+        else 
+        {
+            if( static_cast<int>(input) != input)
+                 ++errorCount;
+        }
 
         numOfJars[i] = static_cast<int>(input);
     }
