@@ -75,7 +75,7 @@ int getHours( double hoursArray[], int hoursMAX )
             } 
             else
             {
-                cout << "Fuck knowns" << endl;
+                cout << "Fuck knows" << endl;
                 return 0;
             }
         } 
