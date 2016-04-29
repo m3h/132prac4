@@ -46,41 +46,30 @@ int getHours( double hoursArray[], int hoursMAX )
 
         hours = atof( input.c_str() );
 
-        if ( hours == 999 )
-        {
+        if ( hours == 999 ) {
             hoursArray[i] = hours;
             return 1;
-        } 
-        else if ( hours < 0 || hours > 50 )
-        {
+        } else if ( hours < 0 || hours > 50 ) {
             cout << "----------------------------------------------------------" << endl;
             cout << "You have entered " << hours << ". It is invalid. Program terminated." << endl;
             cout << "----------------------------------------------------------" << endl;
-            return 0;
-        } 
-        else if ( hours == 0 || hours > 40 )
-        {
+            exit(0);
+        } else if ( hours == 0 || hours > 40 ) {
             cout << "You have entered " << hours << ", which is an abnormal input. Please confirm input (Y or N): ";
             getline( cin, input );
 
-            if ( input == "N" || input == "n" )
-            {
+            if ( input == "N" || input == "n" ) {
                 cout << "----------------------------------------------------------" << endl;
                 cout << "You have entered " << hours << " and indicated that it is invalid. Program terminated." << endl;
                 cout << "----------------------------------------------------------" << endl;
-                return 0;
-            } 
-            else if ( input == "Y" || input == "y" )
-            {
-            } 
-            else
-            {
+                exit(0);
+            } else if ( input == "Y" || input == "y" ) {
+            
+            } else {
                 cout << "Fuck knows" << endl;
-                return 0;
+                exit(0);
             }
-        } 
-        else if ( hours == 999 )
-        {
+        } else if ( hours == 999 ) {
             hoursArray[i] = hours;
             return 1;
         }
@@ -89,7 +78,7 @@ int getHours( double hoursArray[], int hoursMAX )
     } while ( i < hoursMAX );
 
    cout << "Array out of memory" << endl;
-   return 0;
+   exit(0);
 }
 
 int displayHours( double hoursArrays[], int hoursMAX )
