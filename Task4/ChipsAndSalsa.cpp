@@ -22,7 +22,7 @@ int main()
 
     displayReport();
 
-    if( errorCount != 0 )
+    if( errorCount )
         cout << "Warning: A total of " << errorCount << " errors were encountered during input." << endl;
     else
         cout << "No errors were encountered during input." << endl;
