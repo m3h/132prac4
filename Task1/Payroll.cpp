@@ -6,6 +6,7 @@ using namespace std;
 
 #define hoursArrayMAX 1000
 
+void printLine();
 int getHours( double hoursArray[], int hoursMAX );
 int displayHours( double hoursArray[], int hoursMAX );
 double avgHours( double hoursArray[], int hoursMAX );
@@ -46,36 +47,37 @@ int getHours( double hoursArray[], int hoursMAX )
 
         hours = atof( input.c_str() );
 
-        if ( hours == 999 ) {
-            hoursArray[i] = hours;
-            return 1;
-        } else if ( hours < 0 || hours > 50 ) {
-            cout << "----------------------------------------------------------" << endl;
-            cout << "You have entered " << hours << ". It is invalid. Program terminated." << endl;
-            cout << "----------------------------------------------------------" << endl;
-            exit(0);
-        } else if ( hours == 0 || hours > 40 ) {
-            cout << "You have entered " << hours << ", which is an abnormal input. Please confirm input (Y or N): ";
-            getline( cin, input );
-
-            if ( input == "N" || input == "n" ) {
-                cout << "----------------------------------------------------------" << endl;
-                cout << "You have entered " << hours << " and indicated that it is invalid. Program terminated." << endl;
-                cout << "----------------------------------------------------------" << endl;
-                exit(0);
-            } else if ( input == "Y" || input == "y" ) {
-            
-            } else {
-                cout << "Fuck knows" << endl;
-                exit(0);
-            }
-        } else if ( hours == 999 ) {
-            hoursArray[i] = hours;
+        if( hours == 999 )
+        {
+            hoursArray[i++] = static_cast<int>(hours);
             return 1;
         }
 
-        hoursArray[i++] = hours;
-    } while ( i < hoursMAX );
+        if( hours > 50 || hours < 0 )
+        {
+            printLine();
+            cout << "You have entered " << static_cast<int>(hours) << ". It is invalid. Program terminated." << endl;
+            printLine();
+            exit(0);
+        }
+
+        if( hours > 40 || hours == 0 )
+        {
+            cout << "You have entered " << static_cast<int>(hours) << ", which is an abnormal input. Please confirm input (Y or N): ";
+            getline( cin, input );
+
+            if( input == "N" || input == "n" )
+            {
+                printLine();
+                cout << "You have entered " << static_cast<int>(hours) << " and indicated that it is invalid. Program terminated." << endl;
+                printLine();
+                exit(0);
+            }
+        }
+
+        hoursArray[i++] = static_cast<int>(hours);
+
+     } while( i < hoursMAX && hoursArray[i] != 999 ); 
 
    cout << "Array out of memory" << endl;
    exit(0);
@@ -99,4 +101,9 @@ double avgHours( double hoursArrays[], int hoursMAX )
     }
 
     return total / i;
+}
+
+void printLine()
+{
+    cout << "----------------------------------------------------------" << endl;
 }
