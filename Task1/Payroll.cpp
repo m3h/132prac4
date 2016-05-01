@@ -66,7 +66,7 @@ int getHours( double hoursArray[], int hoursMAX )
             cout << "You have entered " << static_cast<int>(hours) << ", which is an abnormal input. Please confirm input (Y or N): ";
             getline( cin, input );
 
-            if( input == "N" || input == "n" )
+            if( input != "Y" && input != "y" )
             {
                 printLine();
                 cout << "You have entered " << static_cast<int>(hours) << " and indicated that it is invalid. Program terminated." << endl;
